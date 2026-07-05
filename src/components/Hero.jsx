@@ -17,7 +17,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (!backgroundRef.current) return;
-
+    console.log("changing");
     gsap.to(backgroundRef.current, {
       scrollTrigger: {
         trigger: backgroundRef.current,
