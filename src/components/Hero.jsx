@@ -15,27 +15,27 @@ const Hero = () => {
   const sectionRef = useRef(null);
   const backgroundRef = useRef(null);
 
-  useEffect(() => {
-    if (!backgroundRef.current) return;
-    console.log("changing");
-    gsap.to(backgroundRef.current, {
-      scrollTrigger: {
-        trigger: backgroundRef.current,
-        start: "10% top",
-        end: "center 20%",
-        scrub: true,
-        markers: true,
-      },
-      // y: "-100%",
-      backgroundColor: "#ebebeb",
-      ease: "circ.in",
-    });
-  }, []);
+  // useEffect(() => {
+  //   if (!backgroundRef.current) return;
+  //   console.log("changing");
+  //   gsap.to(backgroundRef.current, {
+  //     scrollTrigger: {
+  //       trigger: backgroundRef.current,
+  //       start: "10% top",
+  //       end: "center 20%",
+  //       scrub: true,
+  //       // markers: true,
+  //     },
+  //     // y: "-100%",
+  //     backgroundColor: "#ebebeb",
+  //     ease: "circ.in",
+  //   });
+  // }, []);
 
   // Delay showing text until 200ms after loading completes
   useEffect(() => {
     if (!isLoading) {
-      const timer = setTimeout(() => setShouldShowText(true), 200);
+      const timer = setTimeout(() => setShouldShowText(true), 100);
       return () => clearTimeout(timer);
     }
     console.log(isLoading);
@@ -73,15 +73,18 @@ const Hero = () => {
         <motion.div
           ref={backgroundRef}
           style={{ y: blackY }}
-          className={`absolute top-[30%] left-0 w-full h-[200vh] z-10 bg-[#1a1a1a] will-change-auto`}
+          className={`absolute top-[30%] left-0 w-full h-[200vh] z-10 bg-background will-change-auto`}
           // ${!isLoading ? "bg-[#1a1a1a]" : "bg-[#1a1a1a]"}
-        />
+        >
+          {/* <div className="w-full h-full bg-background flex justify-end items-center text-white">
+            Some text
+          </div> */}
+        </motion.div>
 
         {/* TEXT */}
         {shouldShowText && (
           <div className="relative w-full px-6 xl:px-10 max-xl:top-[23%] xl:pt-32 z-20 h-full max-h-svh">
             {/* ── MOBILE + TABLET (< xl) ── */}
-
             <div className="xl:hidden flex flex-col h-full justify-start gap-40">
               {/* Heading */}
               <div className="flex items-baseline gap-2">
@@ -170,7 +173,7 @@ const Hero = () => {
                 </motion.p>
               </BlurIn>
 
-              <BlurIn
+              {/* <BlurIn
                 delay={0.9}
                 className="col-span-2 flex justify-end -translate-y-4"
               >
@@ -182,10 +185,22 @@ const Hero = () => {
                   brands whose presence hasn&apos;t caught up to what
                   they&apos;ve built.
                 </motion.p>
-              </BlurIn>
+              </BlurIn> */}
             </div>
           </div>
         )}
+      </div>
+
+      <div className="max-lg:hidden absolute bottom-0 w-full bg-blue-400/0 h-[40svh]">
+        <div className="w-full h-full flex justify-center items-center">
+          <motion.p
+            style={{ color: textColor }}
+            className="text-3xl leading-[1.1] tracking-tight"
+          >
+            <span className="text-[#da7900]">For creatives </span> and brands
+            whose reputation has outgrown their digital presence.
+          </motion.p>
+        </div>
       </div>
     </section>
   );

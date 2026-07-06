@@ -10,7 +10,7 @@ import { useMediaQuery } from "react-responsive";
 
 const Home = () => {
   const { isLoading } = useLoading();
-  const isDesktop = useMediaQuery({
+  let isDesktop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
 
