@@ -6,6 +6,8 @@ import { BlurIn } from "./ui/BlurIn";
 import { useLoading } from "@/app/contexts/LoadingContext";
 import { ScrollTrigger } from "gsap/all";
 import { gsap } from "gsap";
+import ScrambleRevealText from "./ui/ScrambleRevealText";
+import BlurFocusRevealText from "./ui/BlurFocusRevealText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -191,17 +193,20 @@ const Hero = () => {
         )}
       </div>
 
-      <div className="max-lg:hidden absolute bottom-0 w-full bg-blue-400/0 h-[40svh]">
+      {/* <ScrambleRevealText /> */}
+      <BlurFocusRevealText />
+
+      {/* <div className="max-lg:hidden absolute bottom-0 w-full bg-blue-400/0 h-[40svh]">
         <div className="w-full h-full flex justify-center items-center">
           <motion.p
             style={{ color: textColor }}
             className="text-3xl leading-[1.1] tracking-tight"
           >
-            <span className="text-[#da7900]">For creatives </span> and brands
-            whose reputation has outgrown their digital presence.
+            For brands and creatives ready to build a digital presence that
+            reflects who they truly are.
           </motion.p>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

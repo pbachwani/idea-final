@@ -113,101 +113,6 @@ export default function SpotlightGallery() {
           y: progress * moveDistanceImages,
         });
 
-        // projectImgs.forEach((img) => {
-        //   const imgRect = img.getBoundingClientRect();
-        //   const imgTop = imgRect.top;
-        //   const imgBottom = imgRect.bottom;
-
-        //   if (
-        //     imgTop <= imgActivationThresholdTop &&
-        //     imgBottom >= imgActivationThresholdBottom
-        //   ) {
-        //     gsap.set(img, {
-        //       scale: isDesktop ? 1.3 : 1.1,
-        //       zIndex: 10,
-        //       grayscale: 0, // fully colored when active
-        //       brightness: 1.2,
-        //     });
-        //   } else {
-        //     gsap.set(img, {
-        //       scale: 1,
-        //       grayscale: 1, // fully greyscale when inactive
-        //       brightness: 0.6,
-        //     });
-        //   }
-        // });
-
-        // projectImgs.forEach((container) => {
-        //   const imgRect = container.getBoundingClientRect();
-        //   const imgTop = imgRect.top;
-        //   const imgBottom = imgRect.bottom;
-
-        //   const imgEl = container.querySelector("img");
-        //   const videoEl = container.querySelector("video");
-
-        //   if (!imgEl && !videoEl) return;
-
-        //   // if (!videoEl) return;
-        //   if (
-        //     videoEl &&
-        //     imgTop <= imgActivationThresholdTop &&
-        //     imgBottom >= imgActivationThresholdBottom
-        //   ) {
-        //     // Handle video activation logic
-        //     gsap.set(container, {
-        //       scale: isDesktop ? 1.5 : 1.1,
-        //       zIndex: 10,
-        //       duration: 0.3,
-        //       ease: "power2.out",
-        //     });
-        //     gsap.set(videoEl, {
-        //       filter: "grayscale(0) brightness(1)",
-        //       duration: 0.3,
-        //       ease: "power2.out",
-        //     });
-        //   } else {
-        //     gsap.set(container, {
-        //       scale: 1,
-        //       duration: 0.3,
-        //       ease: "power2.out",
-        //     });
-        //     gsap.set(videoEl, {
-        //       filter: "grayscale(0.7) brightness(0.6)",
-        //       duration: 0.3,
-        //       ease: "power2.out",
-        //     });
-        //   }
-
-        //   if (!imgEl) return;
-        //   if (
-        //     imgTop <= imgActivationThresholdTop &&
-        //     imgBottom >= imgActivationThresholdBottom
-        //   ) {
-        //     gsap.set(container, {
-        //       scale: isDesktop ? 1.5 : 1.1,
-        //       zIndex: 10,
-        //       duration: 0.3,
-        //       ease: "power2.out",
-        //     });
-        //     gsap.set(imgEl, {
-        //       filter: "grayscale(0) brightness(1)",
-        //       duration: 0.3,
-        //       ease: "power2.out",
-        //     });
-        //   } else {
-        //     gsap.set(container, {
-        //       scale: 1,
-        //       duration: 0.3,
-        //       ease: "power2.out",
-        //     });
-        //     gsap.set(imgEl, {
-        //       filter: "grayscale(0.7) brightness(0.6)",
-        //       duration: 0.3,
-        //       ease: "power2.out",
-        //     });
-        //   }
-        // });
-
         projectImgs.forEach((container) => {
           const imgRect = container.getBoundingClientRect();
           const imgTop = imgRect.top;
@@ -295,26 +200,45 @@ export default function SpotlightGallery() {
             y: -projectProgress * moveDistanceNames,
           });
 
+          // if (projectProgress > 0 && projectProgress < 1) {
+          //   gsap.set(p, {
+          //     color: "#DA7900",
+          //     // color: "#1b140c",
+          //     //   color: "#fff",
+          //     // fontSize: "28px",
+          //     scale: isDesktop ? 1.3 : 1.3,
+          //     zIndex: 10,
+          //     // ease: "power2.out",
+          //     // duration: 0.3,
+          //     fontWeight: 500,
+          //   });
+          // } else {
+          //   gsap.set(p, {
+          //     color: "#fff",
+          //     //   fontSize: "18px",
+          //     scale: 1,
+          //     // ease: "circ.out",
+          //     // duration: 0.5,
+          //     fontWeight: 300,
+          //   });
+          // }
+
           if (projectProgress > 0 && projectProgress < 1) {
-            gsap.set(p, {
+            gsap.to(p, {
               color: "#DA7900",
-              // color: "#1b140c",
-              //   color: "#fff",
-              //   fontSize: "28px",
               scale: isDesktop ? 1.3 : 1.3,
               zIndex: 10,
-              ease: "power2.out",
+              // ease: "back.out",
               duration: 0.3,
-              fontWeight: 500,
+              delay: 0.05,
             });
           } else {
-            gsap.set(p, {
+            gsap.to(p, {
               color: "#fff",
-              //   fontSize: "18px",
               scale: 1,
-              ease: "circ.out",
-              duration: 0.5,
-              fontWeight: 300,
+              // ase: "back.out",
+              duration: 0.3,
+              delay: 0.05,
             });
           }
         });
@@ -333,7 +257,7 @@ export default function SpotlightGallery() {
   return (
     <section
       ref={spotlightRef}
-      className="spotlight relative w-full h-full px-8 overflow-visible bg-background"
+      className="spotlight relative w-full min-h-screen h-full px-8 overflow-visible bg-background"
     >
       <div className="project-index">
         <h1
@@ -354,7 +278,7 @@ export default function SpotlightGallery() {
             ref={(el) => {
               if (el) projectImgsRef.current[idx] = el;
             }}
-            className="project-img w-full aspect-video transition-all duration-300 ease-out overflow-hidden shadow-xl shadow-black/30"
+            className="project-img w-full aspect-video transition-all duration-300 ease-out overflow-hidden shadow-xl shadow-black/30 will-change-transform"
           >
             {project.video ? (
               <video
@@ -366,7 +290,7 @@ export default function SpotlightGallery() {
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover transition-all duration-300 ease-out"
+                className="w-full h-full object-cover transition-all duration-300 ease-out will-change-transform"
               />
             ) : (
               <img
@@ -392,7 +316,7 @@ export default function SpotlightGallery() {
             ref={(el) => {
               if (el) projectNamesRef.current[idx] = el;
             }}
-            className="text-2xl font-light leading-tight text-[#ffffff] transition-all duration-300 ease-out "
+            className="text-2xl font-light leading-tight text-[#ffffff] will-change-transform "
           >
             {project.name}
           </p>
