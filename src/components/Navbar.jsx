@@ -115,7 +115,7 @@ const Navbar = () => {
               />
             </div>
 
-            <p className="animate-pulse">{time}</p>
+            <p className="animate-pulse text-accent">{time}</p>
           </div>
         </motion.nav>
       )}

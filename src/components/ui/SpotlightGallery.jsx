@@ -12,24 +12,38 @@ const PROJECTS = [
     name: "Off Topic Media Lab",
     image: "/img1.png",
     video: "/media/offtopic/offtopic.mp4",
+    link: "https://offtopicmedialab.com/",
   },
   {
     name: "Ground Glass",
     image: "/img1.png",
     video: "/media/ground-glass/groundglass.mp4",
+    link: "https://ground.glass/",
   },
   {
     name: "Khasak Films",
     image: "/img1.png",
     video: "/media/khasak-films/khasak-main-video.mp4",
+    link: "https://khasakfilms.com/",
   },
   {
     name: "Vishal Vittal",
     image: "/img1.png",
     video: "/media/vishal-vittal/vv1.mov",
+    link: "https://vishalvittal.com/",
   },
-  { name: "Story of being", image: "/media/sob/sob-homepage.png" },
-  { name: "Cinta Kids", image: "/media/cinta-kids/homepage.png" },
+  {
+    name: "Story of being",
+    image: "/media/sob/sob-homepage.png",
+    video: "/media/sob/sob-homepage.mp4",
+    link: "https://storyofbeing.in/",
+  },
+  {
+    name: "Cinta Kids",
+    image: "/media/cinta-kids/homepage.png",
+    video: "/media/cinta-kids/cintakids.mp4",
+    link: "https://cintakids.com/",
+  },
   // { name: "Wedding Invite", image: "/img1.png" },
   // { name: "Tatvam Jaipur", image: "/img1.png" },
 ];
@@ -92,7 +106,7 @@ export default function SpotlightGallery() {
       start: "top top",
       end: `+=${window.innerHeight * 5}px`,
       pin: true,
-      pinSpacing: true,
+      // pinSpacing: true,
       scrub: 1,
       onUpdate: (self) => {
         const progress = self.progress;

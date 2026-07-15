@@ -69,7 +69,7 @@ const Hero = () => {
   );
 
   return (
-    <section ref={sectionRef} className="relative h-[150vh]">
+    <section ref={sectionRef} className="relative h-[150vh] bg-foreground">
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* HERO PANEL */}
         <motion.div
@@ -85,9 +85,10 @@ const Hero = () => {
 
         {/* TEXT */}
         {shouldShowText && (
-          <div className="relative w-full px-6 xl:px-10 max-xl:top-[23%] xl:pt-32 z-20 h-full max-h-svh">
+          <div className="relative w-full px-6 xl:px-10 max-lg:top-[23%] lg:pt-32 z-20 h-full max-h-svh">
+            {/*  max-xl:top-[23%] */}
             {/* ── MOBILE + TABLET (< xl) ── */}
-            <div className="xl:hidden flex flex-col h-full justify-start gap-40">
+            <div className="lg:hidden flex flex-col h-full justify-start gap-40">
               {/* Heading */}
               <div className="flex items-baseline gap-2">
                 <BlurIn delay={0}>
@@ -124,21 +125,21 @@ const Hero = () => {
                   </motion.p>
                 </BlurIn>
 
-                <BlurIn delay={0.5}>
+                {/* <BlurIn delay={0.5}>
                   <motion.p
                     style={{ color: textColorMobile }}
-                    className="text-xl leading-normal tracking-tight"
+                    className="text-xl leading-normal tracking-tight md:hidden"
                   >
                     <span className="text-amber-500">For creatives </span> and
                     brands whose presence hasn&apos;t caught up to what
                     they&apos;ve built.
                   </motion.p>
-                </BlurIn>
+                </BlurIn> */}
               </div>
             </div>
 
             {/* ── DESKTOP (xl+) ── */}
-            <div className="hidden xl:grid grid-cols-12 items-baseline">
+            <div className="hidden lg:grid grid-cols-12 items-baseline">
               <div className="col-span-6">
                 {/* Name */}
                 <div className="flex items-baseline gap-4 overflow-visible translate-y-8">
@@ -161,13 +162,15 @@ const Hero = () => {
                 </div>
               </div>
 
+              <div className="col-span-2" />
+              {/* additional text */}
               <BlurIn delay={0.7} className="col-span-4 -translate-y-4">
                 <motion.p
                   style={{ color: textColor }}
                   className="max-w-sm text-lg leading-[1.1] tracking-tight"
                 >
                   We blend{" "}
-                  <span className="text-amber-500">
+                  <span className="text-accent">
                     strategy, design, and development
                   </span>{" "}
                   to create fast, interactive, and visually refined websites

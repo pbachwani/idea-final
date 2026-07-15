@@ -6,13 +6,25 @@ import gsap from "gsap";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// const TEXT_SEGMENTS = [
+//   { text: "For creatives ", color: "#da7900" },
+//   {
+//     text: "and brands whose reputation has outgrown their digital presence.",
+//     color: null,
+//   },
+// ];
+
 const TEXT_SEGMENTS = [
-  { text: "For creatives ", color: "#da7900" },
+  { text: "For brands", color: "#da7900" },
+  { text: " and ", color: null },
+  { text: "creatives ", color: "#da7900" },
   {
-    text: "and brands whose reputation has outgrown their digital presence.",
+    text: "ready to build a digital presence that reflects who they truly are.",
     color: null,
   },
 ];
+
+// For brands and creatives ready to build a digital presence that reflects who they truly are.
 
 // Group text into words (keeping color per segment), each word gets a flat index
 function groupIntoWords(segments) {
@@ -44,7 +56,7 @@ export default function BlurFocusRevealText({ textColor }) {
     const st = ScrollTrigger.create({
       trigger: wrapperRef.current,
       start: "top bottom",
-      end: "bottom center",
+      end: "top center",
       scrub: 0.3,
       onUpdate: (self) => {
         const wordProgress = self.progress * totalWords;
@@ -71,12 +83,9 @@ export default function BlurFocusRevealText({ textColor }) {
   }, [totalWords]);
 
   return (
-    <div
-      ref={wrapperRef}
-      className="max-lg:hidden absolute bottom-0 w-full bg-blue-400/0 h-[40svh]"
-    >
-      <div className="w-full h-full flex justify-center items-center">
-        <p className="text-3xl leading-[1.1] tracking-tight flex flex-wrap justify-center gap-x-[0.3em]">
+    <div ref={wrapperRef} className=" absolute bottom-0 w-full h-[40svh] pb-40">
+      <div className="w-full h-full flex justify-center items-center max-w-xl px-6 xl:px-10 mx-auto">
+        <p className="md:text-4xl text-xl leading-[1.1] tracking-tight flex flex-wrap justify-start md:justify-center gap-x-[0.3em] text-left">
           {wordGroups.map(({ word, color, index }) => (
             <span
               key={index}
