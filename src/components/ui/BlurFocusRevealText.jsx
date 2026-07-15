@@ -55,7 +55,7 @@ export default function BlurFocusRevealText({ textColor }) {
 
     const st = ScrollTrigger.create({
       trigger: wrapperRef.current,
-      start: "top bottom",
+      start: "top 80%",
       end: "top center",
       scrub: 0.3,
       onUpdate: (self) => {
@@ -83,8 +83,8 @@ export default function BlurFocusRevealText({ textColor }) {
   }, [totalWords]);
 
   return (
-    <div ref={wrapperRef} className=" absolute bottom-0 w-full h-[40svh] pb-40">
-      <div className="w-full h-full flex justify-center items-center max-w-xl px-6 xl:px-10 mx-auto">
+    <div ref={wrapperRef} className="absolute bottom-0 w-full h-[40svh] pb-40">
+      <div className="w-full h-full flex justify-center items-center max-w-2xl px-6 xl:px-10 mx-auto">
         <p className="md:text-4xl text-xl leading-[1.1] tracking-tight flex flex-wrap justify-start md:justify-center gap-x-[0.3em] text-left">
           {wordGroups.map(({ word, color, index }) => (
             <span
@@ -97,6 +97,7 @@ export default function BlurFocusRevealText({ textColor }) {
                 color: color || textColor,
                 willChange: "filter, transform, opacity",
               }}
+              className="blur-lg"
             >
               {word}
             </span>

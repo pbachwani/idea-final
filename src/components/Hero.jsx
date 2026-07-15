@@ -112,16 +112,25 @@ const Hero = () => {
               {/* Description text stacked below */}
               <div className="flex flex-col md:flex-row gap-10 text-justify">
                 <BlurIn delay={0.4}>
-                  <motion.p
+                  {/* <motion.p
                     style={{ color: textColorMobile }}
                     className="text-xl leading-normal tracking-tight "
                   >
                     We blend{" "}
-                    <span className="text-amber-500">
+                    <span className="text-accent">
                       strategy, design, and development
                     </span>{" "}
                     to create fast, interactive, and visually refined websites
                     that leave a lasting impression.
+                  </motion.p> */}
+                  <motion.p
+                    style={{ color: textColorMobile }}
+                    className="text-xl leading-normal tracking-tight "
+                  >
+                    We combine{" "}
+                    <span className="text-accent">strategy and design</span> to{" "}
+                    <span className="text-accent">develop</span> highly
+                    interactive websites that resonate long after the click.
                   </motion.p>
                 </BlurIn>
 
@@ -165,7 +174,7 @@ const Hero = () => {
               <div className="col-span-2" />
               {/* additional text */}
               <BlurIn delay={0.7} className="col-span-4 -translate-y-4">
-                <motion.p
+                {/* <motion.p
                   style={{ color: textColor }}
                   className="max-w-sm text-lg leading-[1.1] tracking-tight"
                 >
@@ -175,6 +184,15 @@ const Hero = () => {
                   </span>{" "}
                   to create fast, interactive, and visually refined websites
                   that leave a lasting impression.
+                </motion.p> */}
+                <motion.p
+                  style={{ color: textColor }}
+                  className="max-w-sm text-lg leading-[1.1] tracking-tight"
+                >
+                  We combine{" "}
+                  <span className="text-accent">strategy and design</span> to{" "}
+                  <span className="text-accent">develop</span> highly
+                  interactive websites that resonate long after the click.
                 </motion.p>
               </BlurIn>
 

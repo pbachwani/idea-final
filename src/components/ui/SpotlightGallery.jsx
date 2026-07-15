@@ -121,7 +121,11 @@ export default function SpotlightGallery() {
 
         gsap.set(projectIndex, {
           y: progress * moveDistanceIndex,
+          opacity: progress >= 0.9 ? 0 : 1,
+          ease: "power1.out",
         });
+
+        // console.log(progress);
 
         gsap.set(projectImagesContainer, {
           y: progress * moveDistanceImages,
