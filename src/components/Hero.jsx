@@ -173,7 +173,7 @@ const Hero = () => {
 
               <div className="col-span-2" />
               {/* additional text */}
-              <BlurIn delay={0.7} className="col-span-4 -translate-y-4">
+              <BlurIn delay={0.3} className="col-span-4 -translate-y-4">
                 {/* <motion.p
                   style={{ color: textColor }}
                   className="max-w-sm text-lg leading-[1.1] tracking-tight"

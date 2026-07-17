@@ -109,7 +109,7 @@ const CardsStack = ({
           {cards.map((card, i) => (
             <div
               key={card.id}
-              className="absolute h-full w-full rounded-4xl bg-black"
+              className="absolute h-full w-full rounded-4xl bg-black group cursor-default"
               ref={(el) => {
                 cardElsRef.current[i] = el;
               }}
@@ -122,12 +122,9 @@ const CardsStack = ({
                   imageClassName,
                 )}
               />
-              <motion.div
-                initial={{ opacity: 0 }}
-                className="absolute right-0 top-0 m-6 rounded-2xl bg-black/30 px-4 py-1.5 lg:m-10 text-accent"
-              >
+              <div className="absolute right-0 top-0 m-6 rounded-2xl bg-black/30 px-4 py-1.5 lg:m-10 text-accent group-hover:scale-110 group-hover:bg-black/0 transition-all duration-200 ease-out">
                 Step <span className="">{card.id}</span>
-              </motion.div>
+              </div>
               <div className="absolute left-0 top-0 z-10 p-6 text-justify lg:p-10">
                 {card.alt && (
                   <h3 className="pb-4 text-2xl font-semibold text-white lg:text-4xl">
@@ -135,7 +132,7 @@ const CardsStack = ({
                   </h3>
                 )}
                 {card.text && (
-                  <p className="mt-3 whitespace-pre-line text-base text-white brightness-125 lg:text-xl max-w-xl">
+                  <p className="mt-3 whitespace-pre-line text-base text-white brightness-125 lg:text-xl max-w-xl tracking-tight">
                     {card.text}
                   </p>
                 )}

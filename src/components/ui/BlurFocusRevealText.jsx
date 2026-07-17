@@ -68,9 +68,9 @@ export default function BlurFocusRevealText({ textColor }) {
           // t: 0 = fully in focus, 1 = fully blurred/unfocused
           const t = Math.max(0, Math.min(1, distFromEdge / windowSize + 0.5));
 
-          const blur = t * 10; // 0px -> 10px
+          const blur = t * 4; // 0px -> 10px
           const scale = 1 + t * 0.08; // 1 -> 1.08
-          const opacity = 1 - t * 0.75; // 1 -> 0.25
+          const opacity = 1 - t * 0.1; // 1 -> 0.25
 
           el.style.filter = `blur(${blur}px)`;
           el.style.transform = `scale(${scale})`;
@@ -84,7 +84,7 @@ export default function BlurFocusRevealText({ textColor }) {
 
   return (
     <div ref={wrapperRef} className="absolute bottom-0 w-full h-[40svh] pb-40">
-      <div className="w-full h-full flex justify-center items-center max-w-2xl px-6 xl:px-10 mx-auto">
+      <div className="w-fit h-full flex justify-center items-center max-w-2xl px-6 xl:px-10 mx-auto">
         <p className="md:text-4xl text-xl leading-[1.1] tracking-tight flex flex-wrap justify-start md:justify-center gap-x-[0.3em] text-left">
           {wordGroups.map(({ word, color, index }) => (
             <span
@@ -97,7 +97,7 @@ export default function BlurFocusRevealText({ textColor }) {
                 color: color || textColor,
                 willChange: "filter, transform, opacity",
               }}
-              className="blur-lg"
+              className="opacity-20 blur-xs"
             >
               {word}
             </span>

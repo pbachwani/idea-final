@@ -13,36 +13,43 @@ const PROJECTS = [
     name: "Off Topic Media Lab",
     image: "/img1.png",
     video: "/media/offtopic/offtopic.mp4",
+    storage: "https://idea-behind.b-cdn.net/project-videos/offtopic.mp4",
     link: "https://offtopicmedialab.com/",
   },
   {
     name: "Ground Glass",
     image: "/img1.png",
     video: "/media/ground-glass/groundglass.mp4",
+    storage: "https://idea-behind.b-cdn.net/project-videos/groundglass.mp4",
     link: "https://ground.glass/",
   },
   {
     name: "Khasak Films",
     image: "/img1.png",
     video: "/media/khasak-films/khasak-main-video.mp4",
+    storage:
+      "https://idea-behind.b-cdn.net/project-videos/khasak-main-video.mp4",
     link: "https://khasakfilms.com/",
   },
   {
     name: "Vishal Vittal",
     image: "/img1.png",
     video: "/media/vishal-vittal/vv1.mov",
+    storage: "https://idea-behind.b-cdn.net/project-videos/vv-home.mp4",
     link: "https://vishalvittal.com/",
   },
   {
     name: "Story of being",
     image: "/media/sob/sob-homepage.png",
     video: "/media/sob/sob-homepage.mp4",
+    storage: "https://idea-behind.b-cdn.net/project-videos/sob-homepage.mp4",
     link: "https://storyofbeing.in/",
   },
   {
     name: "Cinta Kids",
     image: "/media/cinta-kids/homepage.png",
     video: "/media/cinta-kids/cintakids.mp4",
+    storage: "https://idea-behind.b-cdn.net/project-videos/cintakids.mp4",
     link: "https://cintakids.com/",
   },
   // { name: "Wedding Invite", image: "/img1.png" },
@@ -62,6 +69,41 @@ export default function SpotlightGallery() {
   const isDesktop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
+
+  // video pauses if not visible on page
+  useEffect(() => {
+    const videos = videoElsRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+
+          if (entry.isIntersecting) {
+            video.play().catch(() => {
+              // Autoplay may be blocked by the browser
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      },
+    );
+
+    videos.forEach((video) => {
+      if (video) observer.observe(video);
+    });
+
+    return () => {
+      videos.forEach((video) => {
+        if (video) observer.unobserve(video);
+      });
+    };
+  }, []);
+  // video pause logic end
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -301,12 +343,12 @@ export default function SpotlightGallery() {
             }}
             className="project-img w-full aspect-video transition-all duration-300 ease-out overflow-hidden shadow-xl shadow-black/30 will-change-transform"
           >
-            {project.video ? (
+            {project.storage ? (
               <video
                 ref={(el) => {
                   if (el) videoElsRef.current[idx] = el;
                 }}
-                src={project.video}
+                src={project.storage}
                 autoPlay
                 loop
                 muted

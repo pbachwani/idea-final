@@ -73,25 +73,25 @@ const Navbar = () => {
                     rotate,
                   }}
                   d="M5.75004 7.87154C3.43741 11.1861 3.75987 15.7809 6.71741 18.7384C10.0369 22.0579 15.4188 22.0579 18.7382 18.7384C22.0577 15.4189 22.0577 10.037 18.7382 6.71759C15.7807 3.76005 11.1859 3.43759 7.87136 5.75022"
-                  stroke="#c8c8c8"
+                  stroke="#da7900"
                   strokeLinecap="round"
                 />
                 <path
                   d="M12.728 8.72754L12.728 16.7275"
-                  stroke="#ffffff"
+                  stroke="#da7900"
                   strokeWidth="1.2"
                   strokeLinecap="round"
                 />
                 <path
                   d="M16.728 12.7275L8.72803 12.7275"
-                  stroke="#ffffff"
+                  stroke="#da7900"
                   strokeWidth="1.2"
                   strokeLinecap="round"
                 />
               </svg>
             </div>
 
-            <p className="max-sm:hidden">Menu</p>
+            {/* <p className="max-sm:hidden">Menu</p> */}
           </div>
 
           <div className="absolute left-1/2 -translate-x-1/2 text-xl font-bold">
@@ -115,7 +115,7 @@ const Navbar = () => {
               />
             </div>
 
-            <p className="animate-pulse text-accent">{time}</p>
+            <p className="text-accent">{time}</p>
           </div>
         </motion.nav>
       )}
