@@ -187,7 +187,7 @@ const Hero = () => {
                 </motion.p> */}
                 <motion.p
                   style={{ color: textColor }}
-                  className="max-w-sm text-lg leading-[1.1] tracking-tight"
+                  className="max-w-sm text-xl leading-[1.1] tracking-tight text-justify"
                 >
                   We combine{" "}
                   <span className="text-accent">strategy and design</span> to{" "}

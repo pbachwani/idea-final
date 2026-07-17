@@ -10,13 +10,16 @@ import { useMediaQuery } from "react-responsive";
 import ScrambleRevealText from "@/components/ui/ScrambleRevealText";
 import BlurFocusRevealText from "@/components/ui/BlurFocusRevealText";
 import Process from "@/components/Process";
+import Footer from "@/components/Footer";
 
 const Home = () => {
   const { isLoading } = useLoading();
   let isDesktop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
-
+  useEffect(() => {
+    window.dispatchEvent(new Event("resize"));
+  }, []);
   if (isDesktop)
     return (
       <div>
@@ -25,6 +28,7 @@ const Home = () => {
             <Hero />
             <SpotlightGallery />
             <Process />
+            <Footer />
           </>
         )}
       </div>
@@ -35,6 +39,7 @@ const Home = () => {
       <Hero />
       <SpotlightGallery />
       <Process />
+      <Footer />
     </div>
   );
 

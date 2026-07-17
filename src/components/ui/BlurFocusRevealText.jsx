@@ -55,8 +55,8 @@ export default function BlurFocusRevealText({ textColor }) {
 
     const st = ScrollTrigger.create({
       trigger: wrapperRef.current,
-      start: "top 80%",
-      end: "top center",
+      start: "top 60%",
+      end: "top 30%",
       scrub: 0.3,
       onUpdate: (self) => {
         const wordProgress = self.progress * totalWords;

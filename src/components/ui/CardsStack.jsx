@@ -7,6 +7,8 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 import { cn } from "@/lib/utils";
 
+import { motion } from "motion/react";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const CardsStack = ({
@@ -93,7 +95,7 @@ const CardsStack = ({
   }, [cards]);
 
   return (
-    <div className={cn("relative h-screen w-full", className)} ref={wrapperRef}>
+    <div className={cn("relative h-full w-full", className)} ref={wrapperRef}>
       <div
         ref={stickyRef}
         className="relative flex h-screen w-full items-center justify-center overflow-hidden p-3 lg:p-8"
@@ -120,9 +122,12 @@ const CardsStack = ({
                   imageClassName,
                 )}
               />
-              <div className="absolute right-0 top-0 m-6 rounded-2xl bg-black/30 px-4 py-1.5 lg:m-10">
-                Step {card.id}
-              </div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                className="absolute right-0 top-0 m-6 rounded-2xl bg-black/30 px-4 py-1.5 lg:m-10 text-accent"
+              >
+                Step <span className="">{card.id}</span>
+              </motion.div>
               <div className="absolute left-0 top-0 z-10 p-6 text-justify lg:p-10">
                 {card.alt && (
                   <h3 className="pb-4 text-2xl font-semibold text-white lg:text-4xl">

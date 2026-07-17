@@ -57,7 +57,7 @@ const Navbar = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed w-full my-5 bg-none flex mix-blend-difference justify-between sm:px-10 px-4 h-7 items-center z-50"
+          className="fixed w-full my-5 bg-none flex  justify-between sm:px-10 px-4 h-7 items-center z-50"
         >
           <div className="flex gap-2 text-lg items-center">
             <div>

@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { useMediaQuery } from "react-responsive";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -291,7 +292,9 @@ export default function SpotlightGallery() {
         className="project-images absolute top-0 left-1/2 -translate-x-1/2 w-[35%] py-[50dvh] flex flex-col gap-2 z-0 bg-red-300/0 space-y-20"
       >
         {PROJECTS.map((project, idx) => (
-          <div
+          <Link
+            href={project.link}
+            target="_"
             key={idx}
             ref={(el) => {
               if (el) projectImgsRef.current[idx] = el;
@@ -320,7 +323,7 @@ export default function SpotlightGallery() {
                 className="w-full h-full object-cover transition-all duration-300 ease-out"
               />
             )}
-          </div>
+          </Link>
         ))}
       </div>
 
