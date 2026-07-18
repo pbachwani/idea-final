@@ -147,7 +147,7 @@ export default function SpotlightGallery() {
     const scrollTrigger = ScrollTrigger.create({
       trigger: ".spotlight",
       start: "top top",
-      end: `+=${window.innerHeight * 5}px`,
+      end: `+=${window.innerHeight * 4}px`,
       pin: true,
       // pinSpacing: true,
       scrub: 1,
@@ -323,7 +323,7 @@ export default function SpotlightGallery() {
       <div className="project-index">
         <h1
           ref={projectIndexRef}
-          className="text-5xl md:text-6xl lg:text-7xl font-light uppercase tracking-tight text-white -z-10"
+          className="text-5xl md:text-6xl lg:text-7xl font-light uppercase tracking-tight text-white/30 -z-10"
         >
           {currentIndex}
         </h1>
@@ -374,7 +374,9 @@ export default function SpotlightGallery() {
         className="project-names absolute right-10 bottom-4 flex flex-col items-end z-10"
       >
         {PROJECTS.map((project, idx) => (
-          <p
+          <Link
+            href={project.link}
+            target="_"
             key={idx}
             ref={(el) => {
               if (el) projectNamesRef.current[idx] = el;
@@ -382,7 +384,7 @@ export default function SpotlightGallery() {
             className="text-2xl font-light leading-tight text-[#ffffff] will-change-transform "
           >
             {project.name}
-          </p>
+          </Link>
         ))}
       </div>
 

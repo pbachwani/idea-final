@@ -1,18 +1,39 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   AnimatePresence,
   useScroll,
   useSpring,
   useTransform,
+  useInView,
 } from "motion/react";
 import TextType from "./ui/TextType";
 
 const Navbar = () => {
   const [time, setTime] = useState("");
   const [showNavbar, setShowNavbar] = useState(false);
+
+  const [hide, setHide] = useState(false);
+
+  useEffect(() => {
+    const footer = document.getElementById("footer");
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHide(entry.isIntersecting);
+      },
+      {
+        threshold: 0.2,
+      },
+    );
+
+    observer.observe(footer);
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const updateTime = () => {
@@ -54,7 +75,7 @@ const Navbar = () => {
       {showNavbar && (
         <motion.nav
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: hide ? 0 : 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="fixed w-full my-5 bg-none flex  justify-between sm:px-10 px-4 h-7 items-center z-50"

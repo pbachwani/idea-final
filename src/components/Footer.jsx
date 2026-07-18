@@ -65,6 +65,7 @@ function Footer() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.3, delay: 0.2, ease: "easeOut" }}
         viewport={{ once: false }}
+        id="footer"
         className="relative md:max-h-[80%] md:h-[60svh] h-svh w-full mt-20 overflow-hidden rounded-t-4xl"
       >
         <Toaster />
