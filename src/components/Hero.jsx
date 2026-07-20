@@ -78,14 +78,14 @@ const Hero = () => {
           className={`absolute top-[30%] left-0 w-full h-[200vh] z-10 bg-background will-change-auto`}
           // ${!isLoading ? "bg-[#1a1a1a]" : "bg-[#1a1a1a]"}
         >
-          {/* <div className="w-full h-full bg-background flex justify-end items-center text-white">
-            Some text
+          {/* <div className="w-full h-full bg-background flex justify-center items-center text-white">
+            Some text...
           </div> */}
         </motion.div>
 
         {/* TEXT */}
         {shouldShowText && (
-          <div className="relative w-full px-6 xl:px-10 max-lg:top-[23%] lg:pt-32 z-20 h-full max-h-svh">
+          <div className="relative w-full px-6 xl:px-10 max-lg:top-[23%] lg:top-[12%] xl:top-[15%] z-20 h-full max-h-svh">
             {/*  max-xl:top-[23%] */}
             {/* ── MOBILE + TABLET (< xl) ── */}
             <div className="lg:hidden flex flex-col h-full justify-start gap-40">
@@ -174,17 +174,6 @@ const Hero = () => {
               <div className="col-span-2" />
               {/* additional text */}
               <BlurIn delay={0.3} className="col-span-4 -translate-y-4">
-                {/* <motion.p
-                  style={{ color: textColor }}
-                  className="max-w-sm text-lg leading-[1.1] tracking-tight"
-                >
-                  We blend{" "}
-                  <span className="text-accent">
-                    strategy, design, and development
-                  </span>{" "}
-                  to create fast, interactive, and visually refined websites
-                  that leave a lasting impression.
-                </motion.p> */}
                 <motion.p
                   style={{ color: textColor }}
                   className="max-w-sm text-xl leading-[1.1] tracking-tight text-justify"
